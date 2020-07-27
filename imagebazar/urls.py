@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from imagebazarclone import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
+    #Path for HomePage
+    path('', views.home, name='home'),
+    
+    path('upload', views.upload, name='upload')
+
 ]
