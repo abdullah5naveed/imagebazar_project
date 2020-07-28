@@ -1,14 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Home Page</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
-</head>
-<body>
-    <h1>This is home page of our app...</h1>
-</body>
-</html>
+{% extends 'imagebazarclone/base.html' %}
+{% load static %}
+
+<style>
+    .list-group-item.active{background-color: cornflowerblue;}
+</style>
+
+{% block data %}
+
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-md-2">
+
+            <ul class="list-group">
+                <li class="list-group-item active">Categories</li>
+                {% for c in Category %}
+
+                <li class="list-group-item">{{c.title}}</li>
+                
+                {% endfor %}
+                
+              </ul>
+
+        </div>
+
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card-columns">
+                        {% for i in images %}
+                            <div class="card">
+                                <img src="{{i.image.url}}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title">{{i.title}}</h5>
+                                <p class="card-text">{{i.description}}</p>
+                                <a href="#" class="btn btn-primary">View</a>
+                                </div>
+                            </div>                                             
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
